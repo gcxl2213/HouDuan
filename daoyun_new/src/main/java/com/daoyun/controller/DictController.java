@@ -87,7 +87,7 @@ public class DictController {
         Dict dict = new Dict();
         dict.setId(id).setName(name).setEnglishName(englishName).setDescription(description)
                 .setDefaultValue(defaultValue).setValue(value);
-        dictService.insertDict(dict);
+        dictService.updateDict(dict);
         Result result = new Result();
         result.setCode(2000);
         return result;

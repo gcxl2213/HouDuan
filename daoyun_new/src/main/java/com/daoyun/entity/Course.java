@@ -2,6 +2,9 @@ package com.daoyun.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -21,6 +24,7 @@ public class Course implements Serializable {
 
     private static final long serialVersionUID=1L;
 
+    @TableId(value = "id", type = IdType.AUTO)
       private Integer id;
 
     private Integer teacherId;
@@ -29,9 +33,6 @@ public class Course implements Serializable {
 
     private String courseName;
 
-    /**
-     * 学期：2020-2021-1（2020-2021-2）
-     */
     private Integer term;
 
     private LocalDateTime endTime;
@@ -42,6 +43,10 @@ public class Course implements Serializable {
 
     private String classroom;
 
+    private String school;
+
+    private String academy;
+
     private Integer organizationId;
 
     private Integer creater;
@@ -51,6 +56,5 @@ public class Course implements Serializable {
     private Integer modifier;
 
     private LocalDateTime modifyTime;
-
 
 }

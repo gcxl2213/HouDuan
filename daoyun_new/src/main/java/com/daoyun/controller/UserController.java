@@ -98,6 +98,7 @@ public class UserController {
             result.setStatus("用户不存在");
             return result;
         }
+
         String userPassword = user.getPassword();
 
         if(userPassword == password){
@@ -141,6 +142,30 @@ public class UserController {
         }
         result.setData(user);
         result.setCode(2000);
+        return result;
+    }
+
+    @PostMapping("/userAdd")
+    @ApiOperation(value="后台管理系统添加用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query", name = "phone", value = "用户手机号", required = true, dataType = "String"),
+            @ApiImplicitParam(paramType="query", name = "name", value = "用户姓名", required = true, dataType = "String")
+    })
+    public Result userAddd(@RequestParam String phone,@RequestParam String name){
+        User oldUser = userService.selectUserByPhone(phone);
+        Result<Object> result = new Result<>();
+        // 判断用户是否已经注册
+        if(oldUser != null){
+            result.setCode(1);
+            result.setStatus("该用户已经存在");
+            return result;
+        }
+        User newUser = new User();
+        newUser.setPhone(phone);
+        newUser.setPassword("12345");
+        newUser.setName(name);
+        newUser.setIsTeacher(true);
+        userService.insertUser(newUser);
         return result;
     }
 }
