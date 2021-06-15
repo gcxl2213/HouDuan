@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Controller;
  * @author 蔡启铨
  * @since 2021-04-25
  */
-@Controller
+@RestController
+@CrossOrigin
 @RequestMapping("/authority")
 public class AuthorityController {
 

@@ -34,7 +34,7 @@ public class Dict implements Serializable {
 
     private String description;
 
-    private Boolean defaultValue;
+    private Integer defaultValue;
 
     /**
      * 字典内容

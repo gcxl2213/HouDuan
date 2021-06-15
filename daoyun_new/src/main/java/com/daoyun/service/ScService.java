@@ -12,5 +12,19 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-04-25
  */
 public interface ScService extends IService<Sc> {
+    /**
+     * 根据两个ID查询是否有这个学生选了这门课
+     * @param courseId
+     * @param studentId
+     * @return
+     */
+    public Sc searchScByTwoId(int courseId, int studentId);
+
+    /**
+     * 创建学生选课
+     * @param sc
+     * @return
+     */
+    public boolean createSc(Sc sc);
 
 }

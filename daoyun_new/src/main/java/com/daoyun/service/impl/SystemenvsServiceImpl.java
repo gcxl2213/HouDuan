@@ -57,4 +57,19 @@ public class SystemenvsServiceImpl extends ServiceImpl<SystemenvsMapper, Systeme
     public void deleteSystemenvs(Integer id) {
         systemenvsMapper.deleteById(id);
     }
+
+    @Override
+    public boolean keyIsExist(String key) {
+        QueryWrapper<Systemenvs> systemenvsQueryWrapper = new QueryWrapper<>();
+        systemenvsQueryWrapper.eq("sys_key",key);
+        List<Systemenvs> systemenvsList = systemenvsMapper.selectList(systemenvsQueryWrapper);
+        boolean flag;
+        if(systemenvsList.isEmpty()){
+            flag = false;
+        }else {
+            flag = true;
+        }
+        return flag;
+    }
+
 }

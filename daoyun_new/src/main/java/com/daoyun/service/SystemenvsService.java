@@ -23,7 +23,7 @@ public interface SystemenvsService extends IService<Systemenvs> {
     public List<Systemenvs> selectAllSystemenvsByPage(Integer currentPage);
 
     /**
-     * 给定Dict对象，插入数据库
+     * 给定系统参数对象，插入数据库
      * 返回boolean类型，表示是否插入成功
      * @param systemenvs
      * @return
@@ -31,17 +31,23 @@ public interface SystemenvsService extends IService<Systemenvs> {
     public boolean insertSystemenvs(Systemenvs systemenvs);
 
     /**
-     * 输入Dict对象，直接根据updateById进行修改
+     * 输入系统参数对象，直接根据updateById进行修改
      * @param systemenvs
      * @return
      */
     public void updateSystemenvs(Systemenvs systemenvs);
 
     /**
-     * 输入id，然后删除对应id数据字典项
+     * 输入id，然后删除对应id系统参数项
      * @param id
      * @return
      */
     public void deleteSystemenvs(Integer id);
 
+    /**
+     * 输入key，然后根据key查询是否存在这个系统参数
+     * @param key
+     * @return
+     */
+    public boolean keyIsExist(String key);
 }

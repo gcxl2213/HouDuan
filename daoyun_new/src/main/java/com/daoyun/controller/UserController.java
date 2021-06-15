@@ -27,6 +27,7 @@ import java.util.HashMap;
  * @since 2021-04-25
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
     @Resource
@@ -101,8 +102,8 @@ public class UserController {
 
         String userPassword = user.getPassword();
 
-        if(userPassword == password){
-            result.setCode(2000);
+        if(userPassword.equals(password)){
+            result.setCode(20000);
             result.setData(user);
         }else{
             result.setCode(1);

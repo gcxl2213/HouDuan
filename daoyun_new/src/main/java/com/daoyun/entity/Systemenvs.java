@@ -27,9 +27,11 @@ public class Systemenvs implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
       private Integer id;
 
-    private Integer experience;
+    private String sysKey;
 
-    private Integer distance;
+    private Integer sysValue;
+
+    private String sysName;
 
     private Integer creater;
 
