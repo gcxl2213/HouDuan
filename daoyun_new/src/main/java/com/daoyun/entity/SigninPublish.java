@@ -29,6 +29,7 @@ public class SigninPublish implements Serializable {
 
     private Integer courseId;
 
+    //1为一键签到，2为限时签到，3为密码签到
     private Integer type;
 
     private LocalDateTime startTime;

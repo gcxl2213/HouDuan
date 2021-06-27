@@ -2,6 +2,9 @@ package com.daoyun.service;
 
 import com.daoyun.entity.StuSignin;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.daoyun.entity.Systemenvs;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-04-25
  */
 public interface StuSigninService extends IService<StuSignin> {
+    public List<StuSignin> searchSigninStuid(int studentId, int signinId);
 
 }

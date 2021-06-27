@@ -42,7 +42,7 @@ public class User implements Serializable {
 
     private Boolean isTeacher;
 
-    private Integer organizationId;
+    private String organization;
 
     private Integer creater;
 

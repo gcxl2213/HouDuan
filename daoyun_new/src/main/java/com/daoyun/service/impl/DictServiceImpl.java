@@ -29,14 +29,9 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     private DictMapper dictMapper;
 
     @Override
-    public List<Dict> selectAllDictByPage(Integer currentPage) {
-        //分页查询步骤
+    public List<Dict> selectAllDict() {
         QueryWrapper<Dict> dictQueryWrapper = new QueryWrapper<>();
-        dictQueryWrapper.groupBy("name");
-        IPage<Dict> page = new Page<>(currentPage, 10);
-        IPage<Dict> dictIPage = dictMapper.selectPage(page, dictQueryWrapper);
-        List<Dict> records = dictIPage.getRecords();
-        return records;
+        return dictMapper.selectList(dictQueryWrapper);
     }
 
     @Override
@@ -46,49 +41,5 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         return dictMapper.selectList(dictQueryWrapper);
     }
 
-    @Override
-    public List<Dict> selectAllDict() {
-        QueryWrapper<Dict> dictQueryWrapper = new QueryWrapper<>();
-        return dictMapper.selectList(dictQueryWrapper);
-    }
 
-    @Override
-    public boolean insertDict(Dict dict) {
-        int insert = dictMapper.insert(dict);
-        boolean flag;
-        if (insert == 0){
-            flag = false;
-        }else {
-            flag = true;
-        }
-        return flag;
-    }
-
-    @Override
-    public void updateDict(Dict dict) {
-        dictMapper.updateById(dict);
-    }
-
-    @Override
-    public void updateDictByName(String oldName,String name,String englishName,int defaultValue) {
-        QueryWrapper<Dict> dictQueryWrapper = new QueryWrapper<>();
-        dictQueryWrapper.eq("name", oldName);
-        List<Dict> dicts = dictMapper.selectList(dictQueryWrapper);
-        for (int i = 0; i < dicts.size(); i++) {
-            dictMapper.updateById(dicts.get(i).setName(name).setEnglishName(englishName).setDefaultValue(defaultValue));
-        }
-    }
-
-
-    @Override
-    public void deleteDict(Integer id) {
-        dictMapper.deleteById(id);
-    }
-
-    @Override
-    public void deleteDictByName(String name) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("name", name);
-        dictMapper.deleteByMap(map);
-    }
 }

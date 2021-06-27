@@ -50,4 +50,6 @@ public interface SystemenvsService extends IService<Systemenvs> {
      * @return
      */
     public boolean keyIsExist(String key);
+
+    public Systemenvs searchSysExp();
 }

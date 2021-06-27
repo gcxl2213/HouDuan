@@ -36,4 +36,11 @@ public class ScServiceImpl extends ServiceImpl<ScMapper, Sc> implements ScServic
         int insert = scMapper.insert(sc);
         return true;
     }
+
+    @Override
+    public void deleteSc(int courseId, int studentId) {
+        QueryWrapper<Sc> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("course_id",courseId).eq("student_id",studentId);
+        scMapper.delete(queryWrapper);
+    }
 }

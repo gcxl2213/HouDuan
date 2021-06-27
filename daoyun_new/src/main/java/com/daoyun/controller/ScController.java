@@ -9,12 +9,9 @@ import com.daoyun.service.ScService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -36,13 +33,13 @@ public class ScController {
     private CourseService courseService;
 
     @PostMapping("create")
-    @ApiOperation(value="学生加入班课")
+    @ApiOperation(value="学生根据班课号码加入班课")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="query", name = "courseId", value = "要加入的班课的id", required = true, dataType = "int"),
             @ApiImplicitParam(paramType="query", name = "studentId", value = "要加入班课的学生id", required = true, dataType = "int")
     })
-    public Result createCourse(Sc sc){
-        Result result = new Result();
+    public Result<Sc> createSc(Sc sc){
+        Result<Sc> result = new Result<>();
         result.setCode(1);
         //1、根据courseId查询班课是否存在
         Course course = courseService.searchCourseById(sc.getCourseId());
@@ -69,9 +66,25 @@ public class ScController {
         //以上都没有问题则可以加入该班课
         sc.setExperience(0);
         scService.createSc(sc);
+        result.setData(sc);
         result.setCode(20000);
         return result;
     }
+
+    @DeleteMapping("delete")
+    @ApiOperation(value="学生退出班课")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query", name = "studentId", value = "要退出的学生", required = true, dataType = "int"),
+            @ApiImplicitParam(paramType="query", name = "courseId", value = "要退出的课程", required = true, dataType = "int")
+    })
+    public Result createCourse(Sc sc){
+        Result result = new Result();
+        scService.deleteSc(sc.getCourseId(),sc.getStudentId());
+        result.setCode(20000);
+        return result;
+    }
+
+
 
 }
 

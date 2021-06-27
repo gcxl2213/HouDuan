@@ -31,6 +31,8 @@ public class Course implements Serializable {
 
     private String courseNum;
 
+    private String className;
+
     private String courseName;
 
     private Integer term;
@@ -44,6 +46,8 @@ public class Course implements Serializable {
     private String classroom;
 
     private String school;
+
+    private Integer currentSignin;
 
     private String academy;
 

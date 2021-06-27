@@ -72,4 +72,12 @@ public class SystemenvsServiceImpl extends ServiceImpl<SystemenvsMapper, Systeme
         return flag;
     }
 
+    @Override
+    public Systemenvs searchSysExp() {
+        QueryWrapper<Systemenvs> systemenvsQueryWrapper = new QueryWrapper<>();
+        systemenvsQueryWrapper.eq("sys_key","exp");
+        Systemenvs systemenvs = systemenvsMapper.selectOne(systemenvsQueryWrapper);
+        return systemenvs;
+    }
+
 }

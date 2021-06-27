@@ -1,5 +1,6 @@
 package com.daoyun.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.daoyun.entity.Course;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.daoyun.entity.Dict;
@@ -43,4 +44,10 @@ public interface CourseService extends IService<Course> {
      * @return
      */
     public boolean updateCourse(Course course);
+
+    public List<Course> searchAllCourse();
+
+    public List<Course> searchCourseTeacher(int teacherId);
+
+    public List<Course> searchCourseStudent(int studentId);
 }

@@ -1,10 +1,14 @@
 package com.daoyun.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.daoyun.entity.StuSignin;
 import com.daoyun.mapper.StuSigninMapper;
 import com.daoyun.service.StuSigninService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +20,15 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class StuSigninServiceImpl extends ServiceImpl<StuSigninMapper, StuSignin> implements StuSigninService {
+    @Resource
+    private StuSigninMapper stuSigninMapper;
 
+    @Override
+    public List<StuSignin> searchSigninStuid(int studentId, int signinId) {
+        QueryWrapper<StuSignin> stuSigninQueryWrapper = new QueryWrapper<>();
+        stuSigninQueryWrapper.eq("student_id", studentId)
+                .eq("signin_id", signinId);
+        List<StuSignin> stuSignins = stuSigninMapper.selectList(stuSigninQueryWrapper);
+        return stuSignins;
+    }
 }

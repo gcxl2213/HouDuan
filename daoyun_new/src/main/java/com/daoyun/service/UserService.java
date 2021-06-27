@@ -3,6 +3,8 @@ package com.daoyun.service;
 import com.daoyun.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户表：存储用户信息，同时分类学生老师和管理员（identity） 服务类
@@ -26,5 +28,11 @@ public interface UserService extends IService<User> {
      */
     public User selectUserByPhone(String phone);
 
+    /**
+     * 根据id修改
+     * @param user
+     */
+    public void changeUser(User user);
 
+    public List<User> searchUserCourse(int courseId);
 }

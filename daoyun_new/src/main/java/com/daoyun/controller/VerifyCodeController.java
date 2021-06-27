@@ -47,7 +47,7 @@ public class VerifyCodeController {
         MessUtil.sendMess(phone,mobileCode);
         this.redisService.set(type + phone,mobileCode,30);
 
-        result.setCode(2000);
+        result.setCode(20000);
         result.setStatus("验证码发送成功");
         return result;
     }

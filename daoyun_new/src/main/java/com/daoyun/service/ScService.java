@@ -27,4 +27,6 @@ public interface ScService extends IService<Sc> {
      */
     public boolean createSc(Sc sc);
 
+    public void deleteSc(int courseId, int studentId);
+
 }
