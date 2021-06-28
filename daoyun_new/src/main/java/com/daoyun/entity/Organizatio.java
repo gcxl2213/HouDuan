@@ -3,8 +3,8 @@ package com.daoyun.entity;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.util.List;
-
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,4 +42,6 @@ public class Organizatio implements Serializable {
     private LocalDateTime modifyTime;
 
 
+    @TableField(exist = false)
+    private List<Organizatio> children;
 }

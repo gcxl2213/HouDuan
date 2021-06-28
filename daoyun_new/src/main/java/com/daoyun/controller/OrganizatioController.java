@@ -5,6 +5,7 @@ import com.daoyun.entity.Dict;
 import com.daoyun.entity.Organizatio;
 import com.daoyun.entity.Result;
 import com.daoyun.service.OrganizatioService;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +26,6 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/organizatio")
 public class OrganizatioController {
-
     @Resource
     private OrganizatioService organizatioService;
 
@@ -103,6 +103,18 @@ public class OrganizatioController {
             result.setStatus("找不到数据！");
             return result;
         }
+        result.setCode(20000);
+        result.setData(organizatios);
+        return result;
+    }
+
+    @GetMapping("/search/tree")
+    @ApiOperation(value="树查询")
+    @ApiImplicitParams({
+    })
+    public Result<List<Organizatio>> selectOrgTree(){
+        Result<List<Organizatio>> result = new Result<>();
+        List<Organizatio> organizatios = organizatioService.searchOrgTree();
         result.setCode(20000);
         result.setData(organizatios);
         return result;

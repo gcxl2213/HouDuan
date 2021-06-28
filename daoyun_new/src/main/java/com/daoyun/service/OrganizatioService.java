@@ -17,5 +17,5 @@ public interface OrganizatioService extends IService<Organizatio> {
     public List<Organizatio> searchOrgParent(int parentId);
     public List<Organizatio> searchOrgId(int id);
     public List<Organizatio> searchOrgAll();
-
+    public List<Organizatio> searchOrgTree();
 }
